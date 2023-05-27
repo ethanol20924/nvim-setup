@@ -113,8 +113,6 @@ require('lazy').setup({
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
     opts = {
       char = '┊',
       show_trailing_blankline_indent = false,
@@ -217,6 +215,9 @@ vim.o.termguicolors = true
 vim.opt.spell = true
 vim.opt.spelllang = { 'en_gb' }
 
+-- Exclude help, vimdoc and dashboard from indentline
+vim.g.indent_blankline_filetype_exclude = { 'help', 'vimdoc', 'dashboard' }
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -276,6 +277,17 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'vimdoc', 'vim', 'markdown', 'latex', 'jsonc', 'markdown_inline' },
+
+  -- Rainbow parentheses
+  rainbow = {
+    enable = true,
+    -- list of languages you want to disable the plugin for
+    disable = { 'jsx', 'cpp' },
+    -- Which query to use for finding delimiters
+    query = 'rainbow-parens',
+    -- Highlight the entire buffer all at once
+    strategy = require('ts-rainbow').strategy.global,
+  },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
