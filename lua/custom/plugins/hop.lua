@@ -17,5 +17,17 @@ return {
     vim.keymap.set('', 'T', function()
       hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
     end, { remap = true })
+    vim.keymap.set('', '<leader>hc', function()
+      hop.hint_char1()
+    end, { remap = true })
+    vim.keymap.set('', '<leader>hp', function()
+      hop.hint_patterns()
+    end, { remap = true })
+    vim.keymap.set('', '<leader>hw', function()
+      hop.hint_words({ current_line_only = true })
+    end, { remap = true })
+    vim.keymap.set('', '<leader>hW', function()
+      hop.hint_words()
+    end, { remap = true })
   end,
 }

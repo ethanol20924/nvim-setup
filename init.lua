@@ -276,7 +276,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'vimdoc', 'vim', 'markdown', 'latex', 'jsonc', 'markdown_inline' },
+  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'vimdoc', 'vim', 'markdown', 'latex', 'jsonc', 'markdown_inline', 'cmake' },
 
   -- Rainbow parentheses
   rainbow = {
@@ -416,11 +416,12 @@ local servers = {
       "--clang-tidy",
     },
   },
+
+  cmake = {},
+
   texlab = {},
-  -- gopls = {},
+
   pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
 
   lua_ls = {
     Lua = {
