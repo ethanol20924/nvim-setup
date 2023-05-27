@@ -56,6 +56,9 @@ some more, but that's boring, so here's a list of the stuff I've added.
 **[ oil.nvim ]( https://github.com/stevearc/oil.nvim )**
 - So this is pretty cool, you can navigate through files in a netrw like interface but can add, rename and remove files just by editing the lines in the buffer
 
+**[ hop.nvim ]( https://github.com/phaazon/hop.nvim )**
+- Fun plugin which I'm using to redefine 'f' and 't' motions. Currently being used for jumping to different points in the line quickly.
+
 ### Other
 
 **[ vim-wakatime ]( https://github.com/wakatime/vim-wakatime )**
