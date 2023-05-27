@@ -123,7 +123,15 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim',         opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = 'master', dependencies = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' } },
+  {
+    'nvim-telescope/telescope.nvim',
+    branch = 'master',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'debugloop/telescope-undo.nvim',
+      'BurntSushi/ripgrep'
+    }
+  },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -252,6 +260,9 @@ require('telescope').setup {
   },
 }
 
+require("telescope").load_extension("undo")
+vim.keymap.set("n", "<leader>su", "<cmd>Telescope undo<cr>", { desc = '[S]earch [U]ndo Tree' })
+
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
@@ -276,7 +287,8 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'vimdoc', 'vim', 'markdown', 'latex', 'jsonc', 'markdown_inline', 'cmake' },
+  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'vimdoc', 'vim', 'markdown', 'latex', 'jsonc',
+    'markdown_inline', 'cmake' },
 
   -- Rainbow parentheses
   rainbow = {
