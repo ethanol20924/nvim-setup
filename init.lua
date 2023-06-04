@@ -447,6 +447,12 @@ local servers = {
   },
 }
 
+-- Other packages for mason to install
+local packages = {
+  mypy = {},
+  ruff = {},
+}
+
 -- Setup neovim lua configuration
 require('neodev').setup()
 
@@ -455,7 +461,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
-require('mason').setup()
+require('mason').setup{
+  ensure_installed = vim.tbl_keys(packages)
+}
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
