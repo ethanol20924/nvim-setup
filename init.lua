@@ -52,7 +52,10 @@ require('lazy').setup({
       {
         'j-hui/fidget.nvim',
         opts = {},
-        tag = 'legacy'
+        window = {
+          blend = 0,
+        },
+        tag = 'legacy',
       },
 
       -- Additional lua configuration, makes nvim stuff amazing!
@@ -84,11 +87,59 @@ require('lazy').setup({
   },
 
   {
-    -- colorscheme
-    'ray-x/starry.nvim',
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
     config = function()
-      require('starry.functions').change_style("monokai")
+      require("catppuccin").setup({
+        flavour = "mocha", -- latte, frappe, macchiato, mocha
+        background = {     -- :h background
+          light = "latte",
+          dark = "mocha",
+        },
+        transparent_background = true, -- disables setting the background color.
+        show_end_of_buffer = false,    -- shows the '~' characters after the end of buffers
+        term_colors = false,           -- sets terminal colors (e.g. `g:terminal_color_0`)
+        dim_inactive = {
+          enabled = false,             -- dims the background color of inactive window
+          shade = "dark",
+          percentage = 0.15,           -- percentage of the shade to apply to the inactive window
+        },
+        no_italic = false,             -- Force no italic
+        no_bold = false,               -- Force no bold
+        no_underline = false,          -- Force no underline
+        styles = {                     -- Handles the styles of general hi groups (see `:h highlight-args`):
+          comments = { "italic" },     -- Change the style of comments
+          conditionals = { "italic" },
+          loops = {},
+          functions = {},
+          keywords = {},
+          strings = {},
+          variables = {},
+          numbers = {},
+          booleans = {},
+          properties = {},
+          types = {},
+          operators = {},
+        },
+        color_overrides = {},
+        custom_highlights = {},
+        integration_default = nil, -- set to true/false to enable/disable integrations by default
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          nvimtree = true,
+          treesitter = true,
+          telescope = {
+            enabled = true,
+          },
+          barbar = true,
+          dashboard = true,
+          fidget = true,
+          hop = true,
+          mason = true,
+        },
+      })
     end,
   },
 
@@ -107,7 +158,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'auto',
+        theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
       },
@@ -157,7 +208,7 @@ require('lazy').setup({
     'nvim-treesitter/playground',
     {
       'HiPhish/nvim-ts-rainbow2',
-      branch='master',
+      branch = 'master',
     },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -173,6 +224,10 @@ require('lazy').setup({
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Colour scheme
+vim.cmd.colorscheme "catppuccin"
+vim.api.nvim_set_hl(0,"TelescopeNormal",{bg="none"})
+
 -- Set encoding
 vim.opt.encoding = 'utf-8'
 
@@ -184,6 +239,9 @@ vim.opt.scrolloff = 999
 
 -- No line wrap
 vim.opt.wrap = false
+
+-- Line length ruler
+vim.o.colorcolumn = "80"
 
 -- 4 space tab
 vim.o.tabstop = 4
@@ -465,7 +523,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
-require('mason').setup{
+require('mason').setup {
   ensure_installed = vim.tbl_keys(packages)
 }
 
@@ -506,6 +564,24 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   },
   sources = {
     { name = 'nvim_lsp' },
