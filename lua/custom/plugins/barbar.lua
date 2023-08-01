@@ -14,6 +14,7 @@ return {
       -- Move to previous/next
       map('n', '<leader>bp', '<Cmd>BufferPrevious<CR>', {noremap = true, silent = true, desc = "[B]uffer [P]revious"})
       map('n', '<leader>bn', '<Cmd>BufferNext<CR>', {noremap = true, silent = true, desc = "[B]uffer [N]ext"})
+      map('n', '<leader>bc', '<Cmd>BufferClose<CR>', {noremap = true, silent = true, desc = "[B]uffer [C]lose"})
       -- Sort automatically by...
       map('n', '<leader>bb', '<Cmd>BufferOrderByBufferNumber<CR>', {noremap = true, silent = true, desc = "[B]uffer Order by [B]uffer Number"})
       map('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', {noremap = true, silent = true, desc = "[B]uffer Order by [D]irectory"})
