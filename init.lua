@@ -241,7 +241,7 @@ vim.opt.scrolloff = 999
 vim.opt.wrap = false
 
 -- Line length ruler
-vim.o.colorcolumn = "80"
+vim.o.colorcolumn = "88"
 
 -- 4 space tab
 vim.o.tabstop = 4
@@ -507,6 +507,7 @@ local servers = {
 local packages = {
   mypy = {},
   ruff = {},
+  black = {},
 }
 
 -- Setup neovim lua configuration
