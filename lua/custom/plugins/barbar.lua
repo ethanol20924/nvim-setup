@@ -20,6 +20,8 @@ return {
       map('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', {noremap = true, silent = true, desc = "[B]uffer Order by [D]irectory"})
       map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', {noremap = true, silent = true, desc = "[B]uffer Order by [L]anguage"})
       map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', {noremap = true, silent = true, desc = "[B]uffer Order by [W]indow Number"})
+      -- Delete all buffers except this one
+      map('n', '<leader>ba', '<Cmd>%bd|e#<CR>', {noremap = true, silent = true, desc = "[B]uffer Close [A]ll"})
 
       -- Other:
       -- :BarbarEnable - enables barbar (enabled by default)
