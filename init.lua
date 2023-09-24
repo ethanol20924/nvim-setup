@@ -573,7 +573,11 @@ local servers = {
       plugins = {
         pycodestyle = {
           ignore = {'W291', 'E261', 'W293'},
-        }
+        },
+        ruff = {
+					enabled = true,
+					extendSelect = { "I" },
+				},
       }
     }
   },
