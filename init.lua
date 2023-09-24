@@ -568,7 +568,15 @@ local servers = {
 
 	texlab = {},
 
-	pyright = {},
+  pylsp = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'W291', 'E261', 'W293'},
+        }
+      }
+    }
+  },
 
 	lua_ls = {
 		Lua = {
