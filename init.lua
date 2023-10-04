@@ -175,8 +175,6 @@ require("lazy").setup({
 		"lukas-reineke/indent-blankline.nvim",
     config = function()
       require("ibl").setup {
-        char = "┊",
-        show_trailing_blankline_indent = false,
         exclude = { filetypes = {"dashboard"} }
       }
     end,
