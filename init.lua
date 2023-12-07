@@ -381,6 +381,7 @@ require("nvim-treesitter.configs").setup({
 		"jsonc",
 		"markdown_inline",
 		"cmake",
+    "glsl",
 	},
 
 	-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
@@ -569,6 +570,9 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 })
+
+-- Manual install glsl_analyser
+require("lspconfig").glsl_analyzer.setup{}
 
 -- nvim-cmp setup
 local cmp = require("cmp")
