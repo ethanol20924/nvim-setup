@@ -73,19 +73,11 @@ some more, but that's boring, so here's a list of the stuff I've added.
 There are a few others included but I don't really use them so I won't mention them.
 
 ## NOTES
-- Install [oh-my-zsh](https://ohmyz.sh/).
-```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
 
-- Install [Powerlevel10k](https://github.com/romkatv/powerlevel10k#oh-my-zsh) theme.
-```
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-```
-
-Add `ZSH_THEME="powerlevel10k/powerlevel10k"` to `~/.zshrc`.
-
-Don't forget to make sure the font is set the 'MesloLGS NF' with ligatures on.
+Wanted to put a note here as a reminder that some packages and plugins will not compile 
+on AppleClang. This is rather annoying but I guess it's easier to always target standard
+LLVM if possible. To do this make sure to set CC (and CXX, though this actually isn't 
+necessary) in .zshrc or .zsh_profile.
 
 - Install ripgrep
 ```
