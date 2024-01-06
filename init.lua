@@ -383,6 +383,7 @@ require("nvim-treesitter.configs").setup({
 		"cmake",
     "glsl",
     "swift",
+    "haskell",
 	},
 
 	-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
