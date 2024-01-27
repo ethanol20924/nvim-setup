@@ -94,4 +94,7 @@ brew install node
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
+- Also install clangd locally and not through Mason as every machine I use should have 
+clangd
+
 I've missed a lot of dependencies so oh well. Whoops
