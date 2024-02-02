@@ -11,6 +11,9 @@ and just added stuff as I went.
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -288,9 +291,6 @@ vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
-
 -- Spelling
 vim.opt.spell = true
 vim.opt.spelllang = { "en_gb" }
@@ -381,9 +381,9 @@ require("nvim-treesitter.configs").setup({
 		"jsonc",
 		"markdown_inline",
 		"cmake",
-    "glsl",
-    "swift",
-    "haskell",
+		"glsl",
+		"swift",
+		"haskell",
 	},
 
 	-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
@@ -507,9 +507,9 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-	clangd = {
-		cmd = { "clangd", "--background-index", "--clang-tidy" },
-	},
+	-- clangd = {
+	-- 	cmd = { "clangd", "--background-index", "--clang-tidy" },
+	-- },
 
 	cmake = {},
 
@@ -573,8 +573,17 @@ mason_lspconfig.setup_handlers({
 	end,
 })
 
+-- Manual setup for clangd
+require("lspconfig").clangd.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		cmd = { "clangd", "--background-index", "--clang-tidy" },
+	},
+})
+
 -- Manual install glsl_analyser
-require("lspconfig").glsl_analyzer.setup{}
+require("lspconfig").glsl_analyzer.setup({})
 
 -- nvim-cmp setup
 local cmp = require("cmp")
