@@ -298,6 +298,9 @@ vim.opt.spelllang = { "en_gb" }
 -- Exclude help, vimdoc and dashboard from indentline
 vim.g.indent_blankline_filetype_exclude = { "help", "vimdoc", "dashboard" }
 
+-- Set conceallevel for obsidian
+vim.opt.conceallevel = 1
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
