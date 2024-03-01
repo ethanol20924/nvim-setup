@@ -168,6 +168,11 @@ require("lazy").setup({
         build = "make",
         cond = function() return vim.fn.executable("make") == 1 end
     }, {
+        "nvim-telescope/telescope-frecency.nvim",
+        config = function()
+            require("telescope").load_extension "frecency"
+        end
+    }, {
         -- Highlight, edit, and navigate code
         "nvim-treesitter/nvim-treesitter",
         "nvim-treesitter/nvim-treesitter-context",
@@ -314,6 +319,8 @@ vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep,
                {desc = "[S]earch by [G]rep"})
 vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics,
                {desc = "[S]earch [D]iagnostics"})
+vim.keymap.set("n", "<leader>sr", "<Cmd>Telescope frecency<CR>",
+               {desc = "[S]earch F[R]ecency"})
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
