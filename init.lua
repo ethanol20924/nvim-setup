@@ -176,7 +176,6 @@ require("lazy").setup({
         -- Highlight, edit, and navigate code
         "nvim-treesitter/nvim-treesitter",
         "nvim-treesitter/nvim-treesitter-context",
-        "nvim-treesitter/playground",
         {"HiPhish/rainbow-delimiters.nvim", branch = "master"},
         dependencies = {"nvim-treesitter/nvim-treesitter-textobjects"},
         config = function()
@@ -328,7 +327,8 @@ require("nvim-treesitter.configs").setup({
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = {
         "c", "cpp", "lua", "python", "rust", "vimdoc", "vim", "markdown",
-        "latex", "jsonc", "markdown_inline", "cmake", "glsl", "swift", "haskell"
+        "latex", "jsonc", "markdown_inline", "cmake", "glsl", "swift",
+        "haskell", "query"
     },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
