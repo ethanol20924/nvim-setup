@@ -15,14 +15,25 @@ return {
         "nvim-lua/plenary.nvim"
 
     },
-    opts = {
-        workspaces = {{name = "Personal", path = "~/Vaults/Personal"}},
+    config = function()
+        require("obsidian").setup({
+            workspaces = {{name = "Personal", path = "~/Vaults/Personal"}},
 
-        follow_url_func = function(url)
-            -- Open the URL in the default web browser.
-            vim.fn.jobstart({"open", url}) -- Mac OS
-            -- vim.fn.jobstart({"xdg-open", url})  -- linux
-        end
+            follow_url_func = function(url)
+                -- Open the URL in the default web browser.
+                vim.fn.jobstart({"open", url}) -- Mac OS
+                -- vim.fn.jobstart({"xdg-open", url})  -- linux
+            end
 
-    }
+        })
+        local map = vim.api.nvim_set_keymap
+        map('n', '<leader>on', '<Cmd>ObsidianNew<CR>',
+            {noremap = true, silent = true, desc = "[O]bsidian [N]ew"})
+        map('v', '<leader>ol', '<Cmd>ObsidianLink<CR>',
+            {noremap = true, silent = true, desc = "[O]bsidian [L]ink"})
+        map('n', '<leader>oi', '<Cmd>ObsidianPasteImg<CR>',
+            {noremap = true, silent = true, desc = "[O]bsidian [P]aste Img"})
+        map('n', '<leader>oo', '<Cmd>ObsidianOpen<CR>',
+            {noremap = true, silent = true, desc = "[O]bsidian [O]pen"})
+    end
 }
