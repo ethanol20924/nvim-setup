@@ -35,5 +35,7 @@ return {
             {noremap = true, silent = true, desc = "[O]bsidian [P]aste Img"})
         map('n', '<leader>oo', '<Cmd>ObsidianOpen<CR>',
             {noremap = true, silent = true, desc = "[O]bsidian [O]pen"})
+        map('n', '<leader>os', '<Cmd>ObsidianSearch<CR>',
+            {noremap = true, silent = true, desc = "[O]bsidian [S]earch"})
     end
 }
