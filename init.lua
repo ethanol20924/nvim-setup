@@ -130,7 +130,6 @@ require("lazy").setup({
     }, {
         -- transparent plugin if i have image background
         "xiyaowong/transparent.nvim",
-        config = function() require("transparent").setup() end
     }, {
         -- Set lualine as statusline
         "nvim-lualine/lualine.nvim",
