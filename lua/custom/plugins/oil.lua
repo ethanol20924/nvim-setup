@@ -6,6 +6,9 @@ return {
 			win_options = {
 				concealcursor = "ncvi",
 			},
+			confirmation = {
+				border = "rounded",
+			},
 		})
 		vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
 	end,
