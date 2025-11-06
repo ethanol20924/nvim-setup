@@ -446,7 +446,6 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>/", function()
 				-- You can pass additional configuration to Telescope to change the theme, layout, etc.
 				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-					winblend = 10,
 					previewer = false,
 				}))
 			end, { desc = "[/] Fuzzily search in current buffer" })
@@ -902,8 +901,11 @@ require("lazy").setup({
 		config = function()
 			---@diagnostic disable-next-line: missing-fields
 			require("tokyonight").setup({
+				transparent = true,
 				styles = {
 					comments = { italic = false }, -- Disable italics in comments
+					sidebars = "transparent",
+					floats = "transparent",
 				},
 			})
 
