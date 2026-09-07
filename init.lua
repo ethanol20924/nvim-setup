@@ -645,6 +645,7 @@ require("lazy").setup({
 				"stylua", -- Used to format Lua code
 				"matlab_ls", -- Actually for Octave lol
 				"basedpyright",
+				"fixjson",
 				"ruff",
 				"clang-format", -- NOTE: arm-linux is not in the package registry for clangd - see: https://github.com/mason-org/mason-registry/issues/5800#issuecomment-2156640019
 			})
@@ -695,6 +696,7 @@ require("lazy").setup({
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
 				python = { "black" },
+				json = { "fixjson" },
 				--
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				-- javascript = { "prettierd", "prettier", stop_after_first = true },
